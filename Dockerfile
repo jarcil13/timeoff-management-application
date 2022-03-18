@@ -14,7 +14,7 @@
 # 4. Login to running container (to update config (vi config/app.json): 
 #	docker exec -ti --user root alpine_timeoff /bin/sh
 # --------------------------------------------------------------------
-FROM alpine:3.8
+FROM alpine:3.13
 
 EXPOSE 3000
 
@@ -25,13 +25,13 @@ RUN apk add --no-cache \
     git \
     make \
     nodejs npm \
-    python \
+    python3 \
     vim
     
 RUN adduser --system app --home /app
 USER app
 WORKDIR /app
-RUN git clone https://github.com/timeoff-management/application.git timeoff-management
+RUN git clone https://github.com/jarcil13/timeoff-management-application.git timeoff-management
 WORKDIR /app/timeoff-management
 
 RUN npm install
